@@ -1,0 +1,15 @@
+<h2>dive sites</h2>
+
+<h1>
+    <a href="/sites/new">
+        Add a site
+    </a>
+</h1>
+
+<% for (let site of sites) { %>
+    <p>
+        <a href="/sites/<%=sites.id%>">
+        <%=site.name%></a>
+    </p>
+
+<% } %>
