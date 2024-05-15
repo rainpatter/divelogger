@@ -1,3 +1,6 @@
+-- to upload dumped database
+-- PGPASSWORD={PASSWORD} psql -h oregon-postgres.render.com -U {DATABASE_USER} {DATABASE_NAME} < database_dump.sql
+
 CREATE TABLE dive_sites (
     id SERIAL PRIMARY KEY,
     name TEXT,

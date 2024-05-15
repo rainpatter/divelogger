@@ -1,6 +1,6 @@
 const pg = require('pg')
-const connectionString = process.env.DATABASE_URL
-// const connectionString = process.env.DATABASE_URL_DEPLOYMENT
+// const connectionString = process.env.DATABASE_URL
+const connectionString = process.env.DATABASE_URL_DEPLOYMENT
 
 const pool = new pg.Pool({
     connectionString: connectionString,

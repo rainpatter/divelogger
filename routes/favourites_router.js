@@ -24,7 +24,6 @@ router.post('/favourites', ensureLoggedIn, (req, res) => {
 
         if (err) console.log(err)
 
-        // redirect uses get method
         res.redirect(`/sites/${site_id}`)
 
     })
