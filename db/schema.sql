@@ -36,14 +36,13 @@ CREATE TABLE users (
     location TEXT
 );
 
-CREATE TABLE site_comments (
+CREATE TABLE comments (
     id SERIAL PRIMARY KEY,
     user_id INTEGER NOT NULL,
     site_id INTEGER NOT NULL,
+    review INTEGER,
     content TEXT,
-    comment_date DATETIME,  
-    FOREIGN KEY (user_id) REFERENCES users (id),
-    FOREIGN KEY (site_id) REFERENCES dive_sites (id)
+    comment_date TIMESTAMP
 );
 
 CREATE TABLE image_comments (
@@ -51,9 +50,7 @@ CREATE TABLE image_comments (
     user_id INTEGER NOT NULL,
     image_id INTEGER NOT NULL,
     content TEXT,
-    comment_date DATETIME,  
-    FOREIGN KEY (user_id) REFERENCES users (id),
-    FOREIGN KEY (image_id) REFERENCES images (id)
+    comment_date DATETIME
 );
 
 CREATE TABLE images (
@@ -61,17 +58,29 @@ CREATE TABLE images (
     user_id INTEGER NOT NULL,
     site_id INTEGER NOT NULL,
     image_url TEXT NOT NULL,
-    upload_date TIMESTAMP,  
-    FOREIGN KEY (user_id) REFERENCES users (id),
-    FOREIGN KEY (site_id) REFERENCES dive_sites (id)
+    upload_date TIMESTAMP  
 );
 
-CREATE TABLE reviews (
+-- seed images
+
+INSERT INTO images (
+    user_id,
+    site_id,
+    image_url,
+    upload_date
+) VALUES (
+    1,
+    1,
+    'https://secretsydney.com/wp-content/uploads/2023/08/shutterstock_1055826398-min-scaled.jpg',
+    '2024-05-14 11:54:01'
+);
+
+
+ALTER TABLE users ADD id int IDENTITY(1,1) NOT NULL primary key;
+
+CREATE TABLE favourites(
     id SERIAL PRIMARY KEY,
     user_id INTEGER NOT NULL,
-    site_id INTEGER NOT NULL,
-    content TEXT, 
-    review_date DATETIME,  
-    FOREIGN KEY (user_id) REFERENCES users (id),
-    FOREIGN KEY (site_id) REFERENCES dive_sites (id)
+    site_id INTEGER NOT NULL
 );
+

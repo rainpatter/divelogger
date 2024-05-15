@@ -1,0 +1,22 @@
+<div class="user-bio">  
+    <h2>user bio</h2>
+    <p>username: <%=user.username%></p>
+    <p>location: <%=user.location%></p>
+    <p>member since: <%=user.date_joined%></p>
+</div>   
+
+<div class="user-wrapper">
+    <div class="user-image-wrapper">
+        <h2>latest images</h2>
+        <% for (let image of images) { %>
+            <img src="<%=image.image_url%>" alt="">
+        <% } %>
+    </div>
+
+    <div class="user-favourites">
+        <h2>favourites</h2>
+        <% for (let favourite of favourites) { %>
+            <p><%=favourite.name%></p>
+        <% } %>
+    </div>
+</div>

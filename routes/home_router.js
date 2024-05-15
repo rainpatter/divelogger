@@ -4,7 +4,33 @@ const router = express.Router()
 
 
 router.get('/', (req, res) => {
-    res.send('home')
+
+    const sql = `
+    SELECT
+    *
+    FROM images 
+    INNER JOIN users
+    ON 
+    images.user_id = users.id
+    INNER JOIN dive_sites
+    ON dive_sites.id = images.site_id
+    ;
+    `
+    
+
+    db.query(sql, (err, result) => {
+        if (err) console.log(err)
+
+        const images = result.rows
+        res.render('home', {images: images})
+    })
+    
+
+
+})
+
+router.get('/about', (req, res) => {
+    res.render('about')
 })
 
 module.exports = router

@@ -8,11 +8,15 @@ const expressLayouts = require('express-ejs-layouts')
 const requestLogger = require('./middleware/request_logger')
 const methodOverride = require('method-override')
 const session = require('express-session')
+const setCurrentUser = require('./middleware/set_current_user')
 
 const homeRouter = require('./routes/home_router')
 const sitesRouter = require('./routes/sites_router')
 const imagesRouter = require('./routes/images_router')
 const usersRouter = require('./routes/users_router')
+const sessionRouter = require('./routes/session_router')
+const commentRouter = require('./routes/comments_router')
+const favouritesRouter = require('./routes/favourites_router')
 
 app.set('view engine', 'ejs')
 
@@ -21,7 +25,10 @@ app.use(express.static('public'))
 app.use(methodOverride('_method'))
 app.use(express.urlencoded())
 
+app.set('layout login', 'false')
+
 app.use(requestLogger)
+
 
 app.use(session({
     cookie: { maxAge: 1000 * 60 * 60 * 24 * 3 }, 
@@ -30,10 +37,16 @@ app.use(session({
     saveUninitialized: true
 }))
 
+app.use(setCurrentUser)
+
 app.use(homeRouter)
+app.use(sessionRouter) // not working
 app.use(sitesRouter)
 app.use(imagesRouter)
 app.use(usersRouter)
+app.use(commentRouter)
+app.use(favouritesRouter)
+
 
 app.listen(port, () => {
     console.log(`server listening one port ${port}`)

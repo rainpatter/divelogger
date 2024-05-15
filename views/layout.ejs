@@ -3,23 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>divelogger</title>
-    <link rel="stylesheet" href="style.css">
+    <title>DiveLogger</title>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/reset.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=East+Sea+Dokdo&display=swap" rel="stylesheet">
 </head>
+
 <body>
 
-    <header>
-        Divelogger
-    </header>
+    <div class="header">
+        <header id="header">
+            <%- include('_header')%>
+        </header>
+    </div>
 
+    <div class="body-wrapper">
+            <div class="body">
+                <%- body %>
+            </div>
+    </div>
 
-    <main>
-        <%- body %>
-    </main>
+    <div class="footer-wrapper">
+        <footer>
+            <p>&copy; 2024</p>
+        </footer>
+    </div>
 
-    <footer>
-        <p>footer</p>
-    </footer>
-    
 </body>
 </html>

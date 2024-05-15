@@ -1,0 +1,15 @@
+ 
+<h2 id="users-header">divers</h2>
+
+<div class="users-flex-container">
+    <% for (let user of users) { %>
+        <div class="user-card">
+            <p>
+                <a href="/users/<%=user.id%>">
+                <%=user.username%></a>
+            </p>
+            <img src="/dummy-profile-pic.jpeg" alt="">
+            <p><%=user.location%></p>
+        </div>    
+    <% } %>
+</div>

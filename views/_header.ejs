@@ -1,0 +1,33 @@
+<div class="login-wrapper">
+    <% if (isLoggedIn) { %>
+        <div class="logins">
+            <span id="logged-in">hi <%=currentUser.username%></span>
+            <span class="logout-button">   
+                <form action="/logout?_method=delete" method="post">
+                    <button>logout</button>
+                </form>
+            </span> 
+        </div>
+    <% } else { %>
+    <% } %>
+</div>
+
+<h1 id="site-header"><a href="/">DiveLogger</a></h1>
+
+
+<div class="nav-wrapper">
+    <nav class="nav-bar">
+        <div class="nav-item">
+            <a href="/sites">sites</a>
+        </div>
+        <div class="nav-item">
+            <a href="/users">divers</a>
+        </div>
+        <div class="nav-item">
+            <a href="/about">about</a>
+        </div>
+        <div class="nav-item">
+            <a href="/login">login</a>
+        </div>
+    </nav>
+</div>

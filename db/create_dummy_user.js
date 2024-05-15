@@ -5,10 +5,28 @@ const db = require('./index.js')
 
 const saltRounds = 10;
 
-const username = 'georgia'
+const fakeUsernames = [
+    "DeepDiver82",
+    "AquaExplorer",
+    "TidalTreasure",
+    "SnorkelSiren",
+    "CoralCrafter",
+    "WaveWatcher",
+    "MarineMystic",
+    "ReefRover",
+    "OceanOdyssey",
+    "SplashSeeker",
+    "NauticalNomad",
+    "SurfingSnorkeler",
+    "SeashellCollector",
+    "SunsetSnorkler",
+    "DiveDreamer"
+  ];
+
+const username = "georgia"
 const email = 'gs@test.com'
 const plainTextPassword = 'test'
-const date_joined = '2024-05-01'
+const date_joined = '2024-01-29'
 const location = 'Sydney'
 
 const sql = `
