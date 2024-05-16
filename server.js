@@ -9,6 +9,7 @@ const requestLogger = require('./middleware/request_logger')
 const methodOverride = require('method-override')
 const session = require('express-session')
 const setCurrentUser = require('./middleware/set_current_user')
+const helpers = require('./middleware/helpers')
 
 const homeRouter = require('./routes/home_router')
 const sitesRouter = require('./routes/sites_router')
@@ -28,6 +29,7 @@ app.use(express.urlencoded())
 app.set('layout login', 'false')
 
 app.use(requestLogger)
+app.use(helpers)
 
 
 app.use(session({

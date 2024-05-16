@@ -4,7 +4,7 @@ html {
 
 .body-wrapper {
     margin: 0 auto;
-    width: 80%
+    width: 60%
 }
 
 header {
@@ -21,7 +21,7 @@ h1, h2 {
 #site-header {
     font-family: 'East Sea Dokdo', sans-serif;
     padding: 20px;
-    font-size: 6rem
+    font-size: 7rem
 }
 
 .login-wrapper {
@@ -32,6 +32,10 @@ h1, h2 {
 
 #logged-in {
     font-size: 15px;
+}
+
+#logged-in a {
+    font-weight: bold;
 }
 
 button {

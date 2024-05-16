@@ -14,6 +14,8 @@ router.get('/', (req, res) => {
     images.user_id = users.id
     INNER JOIN dive_sites
     ON dive_sites.id = images.site_id
+    ORDER BY
+    images.upload_date DESC
     ;
     `
     

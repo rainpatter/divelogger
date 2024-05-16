@@ -12,7 +12,7 @@
             <h2>latest pictures</h2>
             <% for (let image of images) { %>
                     <img src="<%=image.image_url%>" alt="">
-                    <p>posted by <span id="username"><%=image.username%></span> at <%=image.upload_date%></p>
+                    <p>posted by <span id="username"><%=image.username%></span> at <%=convertDatetoDay(image.upload_date)%></p>
                     <% if (image.user_id === currentUserId) { %>
                         <form action="/images/<%=image.id%>?_method=delete" method="post">
                             <input type="hidden" name="site_id" value="<%=site.id%>">
@@ -34,6 +34,10 @@
         <div class="comments">
             <% if (isFavourite) { %>
                 <p><span class="favourites-message">Site is in your favourites</span></p>
+                <form action="/favourites/<%=favourite.id%>?_method=delete" method="post">
+                    <input type="hidden" name="site_id" value="<%=favourite.site_id%>">
+                    <button>remove from favourites</button>
+                </form>
             <% } else { %>    
                 <div class="favourites-wrapper">
                     <form action="/favourites" method="post">
@@ -55,7 +59,7 @@
                 <div class="comment-card">
                     <p><span id="username"><%=comment.username%></span></p>
                     <p><%=comment.content%></p>
-                    <p><span id="date"><%=comment.comment_date%></span></p>
+                    <p><span id="date"><%=convertDatetoHour(comment.comment_date)%></span></p>
                     <% if (comment.user_id === currentUserId) { %>
                         <form action="/comments/<%=comment.id%>?_method=delete" method="post">
                             <input type="hidden" name="site_id" value="<%=comment.site_id%>">

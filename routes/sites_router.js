@@ -46,7 +46,6 @@ router.post('/sites', ensureLoggedIn, (req, res) => {
     db. query(sql, [name, location], (err, result) => {
         if (err) console.log(err)
 
-        console.log(result.rows[0])
         res.redirect('/sites')
     })
 
@@ -85,6 +84,7 @@ router.get('/sites/:id', (req, res) => {
         images
         ON users.id = images.user_id
         WHERE site_id = $1
+        ORDER BY images.upload_date DESC;
         ;
     `
 
@@ -101,7 +101,8 @@ router.get('/sites/:id', (req, res) => {
         JOIN
         comments 
         ON users.id = comments.user_id
-        WHERE site_id = $1;
+        WHERE site_id = $1
+        ORDER BY comments.comment_date DESC;
         `
 
     const favouritesSql = `
@@ -116,37 +117,37 @@ router.get('/sites/:id', (req, res) => {
         if (err) console.log(err)
 
         const site = result.rows[0]
-        console.log(site)
         
         db.query(imageSql, [req.params.id], (err, result) => {
             if (err) console.log(err)
         
             const images = result.rows
 
-            console.log(images)
 
             db.query(commentSql, [req.params.id], (err, result) => {
                 if (err) console.log(err)
 
                     const comments = result.rows
 
-                    console.log(comments)
 
                 db.query(favouritesSql, [req.params.id, req.session.userId], (err,result) => {
                     if (err) console.log(err)
 
-                    console.log(result)
                     if (result.rows.length === 0) {
 
                         isFavourite = false
+                        favourite = ''
 
                     } else {
                         
+                        console.log(result)
                         isFavourite = true
+                        favourite = result.rows[0]
+                        console.log(favourite)
 
                     }
                     console.log(isFavourite)
-                    res.render('sites/show', {site: site, images: images, comments: comments, isFavourite: isFavourite, currentUserId: currentUserId})
+                    res.render('sites/show', {site: site, images: images, comments: comments, isFavourite: isFavourite, currentUserId: currentUserId, favourite: favourite})
                     
                 })
             })

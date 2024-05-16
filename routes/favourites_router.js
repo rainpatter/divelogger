@@ -29,4 +29,28 @@ router.post('/favourites', ensureLoggedIn, (req, res) => {
     })
 })
 
+router.delete('/favourites/:id', (req, res) => {
+    
+    let siteId = req.body.site_id
+
+    const sql = 
+    `DELETE 
+    FROM 
+    favourites 
+    WHERE 
+    id = $1
+    ;
+    `
+
+    db.query(sql, [req.params.id], (err, result) => {
+        if (err) {
+            console.log(err);
+        }
+
+        res.redirect(`/sites/${siteId}`)
+    })
+})
+
+
+
 module.exports = router

@@ -2,7 +2,7 @@
     <h2>user bio</h2>
     <p>username: <%=user.username%></p>
     <p>location: <%=user.location%></p>
-    <p>member since: <%=user.date_joined%></p>
+    <p>member since: <%=convertDatetoDay(user.date_joined)%></p>
 </div>   
 
 <div class="user-wrapper">
@@ -17,6 +17,8 @@
         <h2>favourites</h2>
         <% for (let favourite of favourites) { %>
             <p><%=favourite.name%></p>
-        <% } %>
+            <% } %>
     </div>
 </div>
+
+
