@@ -11,24 +11,29 @@
         <div class="images">
             <h2>latest pictures</h2>
             <% for (let image of images) { %>
-                    <img src="<%=image.image_url%>" alt="">
-                    <p>posted by <span id="username"><%=image.username%></span> at <%=convertDatetoDay(image.upload_date)%></p>
-                    <% if (image.user_id === currentUserId) { %>
-                        <form action="/images/<%=image.id%>?_method=delete" method="post">
-                            <input type="hidden" name="site_id" value="<%=site.id%>">
-                            <button>delete image</button>
-                        </form>
-                    <% } %> 
+                    <div class="home-card">
+                        <img src="<%=image.image_url%>" alt="">
+                        <p>posted by <span id="username"><%=image.username%></span> at <%=convertDatetoDay(image.upload_date)%></p>
+                        <% if (image.user_id === currentUserId) { %>
+                            <form action="/images/<%=image.id%>?_method=delete" method="post">
+                                <input type="hidden" name="site_id" value="<%=site.id%>">
+                                <button>delete image</button>
+                            </form>
+                        <% } %> 
+                    </div>
             <% } %>
 
             <h2>add an image of your dive</h2>
 
-            <form action="/images" method="post">
-                <input type="text" name="image_url">
+            <div class="site-form-inline">
+                <form action="/images" method="post" enctype="multipart/form-data">
+                    <input type="file" name="upload_file">
 
-                <input type="hidden" name="site_id" value="<%=site.id%>">
-                <button id="image-post-button">post</button>
-            </form>
+                    <input type="hidden" name="site_id" value="<%=site.id%>">
+                    <button id="image-post-button">create</button>
+                </form>
+            </div>
+
         </div>
 
         <div class="comments">

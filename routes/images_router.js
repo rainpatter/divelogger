@@ -3,15 +3,17 @@ const db = require('../db/')
 const router = express.Router()
 const dateConvert = require('../middleware/convert_datetime')
 const ensureLoggedIn = require('../middleware/ensure_logged_in')
+const upload = require('../middleware/upload')
 
 
 router.get('/images', (req, res) => {
     res.send('images')
 })
 
-router.post('/images', ensureLoggedIn, (req, res) => {
+router.post('/images', ensureLoggedIn, upload.single('upload_file'), (req, res) => {
 
-    let image_url = req.body.image_url
+    console.log(req.file.path)
+    let image_url = req.file.path
     let user_id = req.session.userId
     let site_id = req.body.site_id
     let upload_date = dateConvert(new Date())
@@ -39,6 +41,16 @@ router.post('/images', ensureLoggedIn, (req, res) => {
         res.redirect(`/sites/${site_id}`)
     })
 
+})
+
+router.get('/upload', (req, res) => {
+    res.render('form')
+})
+
+router.post('/uploads/new', upload.single('upload_file'), (req, res) => {
+    console.log(req.file)
+    console.log(req.file.path)
+    res.redirect('/')
 })
 
 router.delete('/images/:id', (req, res) => {

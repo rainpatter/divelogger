@@ -1,11 +1,11 @@
 <div class="sites-index">
     <h2>dive sites</h2>
 
-    <div class="site-list">
+    <div class="home-card">
         <% for (let site of sites) { %>
             <p id="site-link">
                 <a href="/sites/<%=site.id%>">
-                <%=site.name%></a>
+                    &bull;&nbsp; <%= site.name %>&nbsp;&bull;</a>
             </p>
 
     <% } %>
