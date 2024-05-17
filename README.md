@@ -4,27 +4,32 @@
 
 [DiveLogger on Render](https://snorkspotter.onrender.com/) 
 
-(![divelogger screenshot](public/divelogger.png))
+![divelogger screenshot](public/divelogger.png)
 
-## current features
+# current features
 
+## home feed
 - home feed with latest images
 
-- add dive sites with location
+## view and add dive sites
+- add dive sites 
+
+## upload content to dive sites
 - upload pictures of your dive to dive sites
 - comment on dive sites
 - favourite dive sites and access list of your favourites on your profile (link available permanently on header when logged in)
-
 - delete images/comments
 - remove a dive site from favourites
 
+## user profiles
 - view users
-- view other users' images and favourites
+- view other users' latest images and favourites
 
+## signup/login
 - sign up for an account (if username/email not already registered)
-- creating records only available if logged in
+- login allows access to upload/favourite/comment
 
-## tech used
+# tech used
 
 - HTML/CSS
 - Javascript
@@ -35,7 +40,7 @@
 - Cloudinary
 - Render
 
-## future work
+# future work
 
 - admin approvals to add dive sites
 - site tags e.g. accessibility, wildlife
