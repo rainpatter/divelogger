@@ -140,13 +140,13 @@ router.get('/sites/:id', (req, res) => {
 
                     } else {
                         
-                        console.log(result)
+
                         isFavourite = true
                         favourite = result.rows[0]
-                        console.log(favourite)
+  
 
                     }
-                    console.log(isFavourite)
+
                     res.render('sites/show', {site: site, images: images, comments: comments, isFavourite: isFavourite, currentUserId: currentUserId, favourite: favourite})
                     
                 })

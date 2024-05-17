@@ -43,15 +43,7 @@ router.post('/images', ensureLoggedIn, upload.single('upload_file'), (req, res) 
 
 })
 
-router.get('/upload', (req, res) => {
-    res.render('form')
-})
 
-router.post('/uploads/new', upload.single('upload_file'), (req, res) => {
-    console.log(req.file)
-    console.log(req.file.path)
-    res.redirect('/')
-})
 
 router.delete('/images/:id', (req, res) => {
     

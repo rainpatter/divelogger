@@ -27,7 +27,7 @@ router.post('/login', (req, res) => {
         
         if (result.rows.length === 0) {
             console.log('user not found')
-            res.render('login')
+            res.render('login', {statement: ''})
             return 
         }
 
@@ -38,7 +38,7 @@ router.post('/login', (req, res) => {
 
             if (!isCorrect) {
                 console.log('password doesnt match')
-                return res.render('login')
+                return res.render('login', {statement: 'wrong username or password'})
             }
 
             req.session.userId = result.rows[0].id

@@ -3,17 +3,19 @@ require('dotenv').config()
 const db = require('./index.js')
 
 const dummyComments = [
-    "Wow, that looks like an amazing spot to snorkel!",
-    "I wish I could be there right now, snorkeling is so relaxing.",
-    "Does anyone know if there are any good snorkeling spots nearby?",
-    "The water clarity is incredible! Perfect for snorkeling.",
-    "I love snorkeling! It's like exploring a whole new world underwater.",
-    "Had an awesome snorkeling trip today, saw so many colorful fish!",
-    "Snorkeling is definitely on my bucket list!",
-    "I never get tired of snorkeling, it's always such an adventure.",
-    "Snorkeling is the best way to beat the summer heat!",
-    "Just got back from snorkeling and I'm already planning my next trip!"
-  ];
+    "Snorkeling here was like swimming in an aquarium! The water was crystal clear and teeming with colorful fish.",
+    "This snorkeling spot is perfect for families. The shallow waters and gentle currents make it easy for everyone to enjoy.",
+    "I was amazed by the diversity of marine life I encountered while snorkeling here. It felt like I was in a tropical paradise.",
+    "The coral reefs at this location are simply breathtaking. Snorkeling here felt like exploring a hidden treasure trove.",
+    "One of the best snorkeling spots I've ever visited! The underwater scenery is stunning, and there's so much to see.",
+    "Even if you're not an experienced snorkeler, you'll love exploring the shallow reefs and calm waters of this spot.",
+    "I had the most relaxing time snorkeling here. The peaceful ambiance and beautiful surroundings made it a truly memorable experience.",
+    "This snorkeling location exceeded my expectations. I saw everything from colorful corals to playful sea turtles!",
+    "The snorkeling conditions were perfect – warm water, gentle currents, and incredible visibility.",
+    "Snorkeling here was a magical experience. I felt completely immersed in the beauty of the underwater world.",
+    "Whether you're a beginner or an experienced snorkeler, this spot offers something for everyone. Don't miss out!",
+    "I'll never forget the incredible sights I saw while snorkeling at this location. It's a must-visit for any nature lover."
+];
 
 const dateArray = [
     "2023-01-10 08:30:00",
@@ -29,7 +31,7 @@ const dateArray = [
   ]
 
 const userNum = 8
-const site_id = 1
+const site_id = 3
 const review = 4
 
 function seedComments(array, dates, users) {
@@ -71,13 +73,3 @@ seedComments(dummyComments, dateArray, userNum)
 
 
 
-//   CREATE TABLE site_comments (
-//     id SERIAL PRIMARY KEY,
-//     user_id INTEGER NOT NULL,
-//     site_id INTEGER NOT NULL,
-//     review INTEGER,
-//     content TEXT,
-//     comment_date DATETIME,  
-//     FOREIGN KEY (user_id) REFERENCES users (id),
-//     FOREIGN KEY (site_id) REFERENCES dive_sites (id)
-// );

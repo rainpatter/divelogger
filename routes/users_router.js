@@ -66,21 +66,17 @@ router.get('/users/:id', (req, res) => {
         
         const user = result.rows[0]
 
-        console.log(user)
 
         db.query(imageSql, [req.params.id], (err, result) => {
             if (err) console.log(err)
             
             const images = result.rows
-
-            console.log(images)
         
             db.query(favouritesSql, [req.params.id], (err, result) => {
                 if (err) console.log(err)
 
                 favourites = result.rows
 
-                console.log(favourites)
 
                 res.render('users/show', {user: user, images: images, favourites: favourites})
             })
@@ -142,7 +138,6 @@ router.post('/users', (req, res) => {
                         if (err) {
                             console.log(err)
                         }
-                        console.log(result.rows[0])
                         res.render('login', {statement: 'Account created successfuly. Please log in'})
                     })
                 })
